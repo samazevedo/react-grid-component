@@ -1,0 +1,27 @@
+$spacing: (
+    'sm': 8px,
+    'md': 16px,
+    'lg': 24px,
+);
+
+.Grid {
+    &_container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &_item {
+        display: block;
+    }
+    // calc the flex basis for the cols in %
+    @for $i from 1 to 13 {
+        &_cols_#{$i} {
+            flex-basis: $i/12 * 100%;
+        }
+    }
+    // passing the spacing name and value for each case
+    @each $name, $value in $spacing {
+        &_spacing_#{$name} > &_item {
+            padding: $value;
+        }
+    }
+}

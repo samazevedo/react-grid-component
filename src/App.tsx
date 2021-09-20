@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import Box from './components/Box/Box'
+import Grid from './components/Grid/Grid'
+import GridRuler from './components/GridRuler/GridRuler'
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className='App' style={{ margin: '16px', position: 'relative' }}>
+            <GridRuler spacing='sm'></GridRuler>
+            <Grid container spacing='md'>
+                <Grid item cols={6}>
+                    <Box>Box 1</Box>
+                </Grid>
+                <Grid item cols={6}>
+                    <Box>Box 2</Box>
+                </Grid>
+                <Grid item cols={6}>
+                    <Box>Box 3</Box>
+                </Grid>
+                <Grid item cols={6}>
+                    <Box>Box 4</Box>
+                </Grid>
+            </Grid>
+        </div>
+    )
 }
 
-export default App;
+export default App
