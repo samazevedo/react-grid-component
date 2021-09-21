@@ -6,7 +6,7 @@ type Spacing = 'sm' | 'md' | 'lg'
 
 const GridRuler: FC<{ spacing?: Spacing }> = ({ spacing }) => {
     const classNames = cn(styles.GridRuler, {
-        [styles[`GridRUler_spacing_${spacing}`]]: spacing,
+        [styles[`GridRuler_spacing_${spacing}`]]: spacing,
     })
     return (
         <div className={classNames}>
