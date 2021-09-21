@@ -4,6 +4,20 @@ $spacing: (
     'lg': 24px,
 );
 
+$breakpoint: (
+    'sm': 600px,
+    'md': 960px,
+    'lg': 1280px,
+);
+
+$justifyContent: (flex-start, flex-end, center, space-between);
+$alignItems: (flex-start, flex-end, center);
+
+@mixin breakpoint($name) {
+    @media screen and (min-width: map-get($breakpoint, $name)) {
+        @content;
+    }
+}
 .Grid {
     &_container {
         display: flex;
@@ -14,14 +28,46 @@ $spacing: (
     }
     // calc the flex basis for the cols in %
     @for $i from 1 to 13 {
-        &_cols_#{$i} {
+        &_xs_#{$i} {
             flex-basis: $i/12 * 100%;
+        }
+    }
+    @include breakpoint('sm') {
+        @for $i from 1 to 13 {
+            &_sm_#{$i} {
+                flex-basis: $i/12 * 100%;
+            }
+        }
+    }
+    @include breakpoint('md') {
+        @for $i from 1 to 13 {
+            &_md_#{$i} {
+                flex-basis: $i/12 * 100%;
+            }
+        }
+    }
+    @include breakpoint('lg') {
+        @for $i from 1 to 13 {
+            &_lg_#{$i} {
+                flex-basis: $i/12 * 100%;
+            }
         }
     }
     // passing the spacing name and value for each case
     @each $name, $value in $spacing {
         &_spacing_#{$name} > &_item {
             padding: $value;
+        }
+    }
+
+    @each $value in $justifyContent {
+        &_justifyContent_#{$value} {
+            justify-content: $value;
+        }
+    }
+    @each $value in $alignItems {
+        &_alignItems_#{$value} {
+            align-items: $value;
         }
     }
 }
